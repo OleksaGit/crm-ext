@@ -1,0 +1,27 @@
+<h3>Налаштування</h3>
+<div class="body">
+<form action="/setting" method="post">
+
+    <div class="input-field ">
+        <input id="ipServer" name="ipServer" type="text" class="validate">
+        <label for="ipServer">IP адреса сервера АСЦ</label>
+    </div>
+
+    <div class="input-field ">
+        <input id="baseNameAsc" name="baseNameAsc" type="text" class="validate">
+        <label for="baseNameAsc">Імя бази данних АСЦ</label>
+    </div>
+
+    <div class="input-field ">
+        <input id="tokenTg" name="tokenTg" type="text" class="validate">
+        <label for="tokenTg">Токен ключ Telegram</label>
+    </div>
+
+    <div class="input-field ">
+        <input id="tokenViber" name="tokenViber" type="text" class="validate">
+        <label for="tokenViber">Токен ключ Viber</label>
+    </div>
+    <input type="hidden" name="_csrf" value="{{csrf}}">
+    <button class="btn btn-primary">Зберегти налаштування</button>
+</form>
+</div>

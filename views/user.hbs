@@ -1,0 +1,54 @@
+<h3>Користувачі</h3>
+<div class="body">
+    <form action="/user" method="post">
+
+        {{#if error}}
+            <p class="alert">{{error}}</p>
+        {{/if}}
+        <div class="input-field">
+            <input id="name" name="name" type="text" class="validate">
+            <label for="name">Імя користувача</label>
+        </div>
+
+        <div class="input-field">
+            <input id="password" name="password" type="text" class="validate">
+            <label for="password">Пароль</label>
+        </div>
+
+        <div class="input-field">
+            <input id="email" name="email" type="text" class="validate">
+            <label for="email">Email</label>
+        </div>
+
+        <p>
+            <label>
+                <input id="isAdmin" name="isAdmin" type="checkbox"/>
+                <span>Права адміністратора</span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input id="isManager" name="isManager" type="checkbox"/>
+                <span>Права менеджера</span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input id="isEmployee" name="isEmployee" type="checkbox" checked="checked"/>
+                <span>Права працівника</span>
+            </label>
+        </p>
+
+        <div class="input-field">
+            <input id="loginAsc" name="loginAsc" type="text" class="validate">
+            <label for="loginAsc">Користувач АСЦ</label>
+        </div>
+
+        <div class="input-field">
+            <input id="passwordAsc" name="passwordAsc" type="text" class="validate">
+            <label for="passwordAsc">Пароль користувача АСЦ</label>
+        </div>
+        <input type="hidden" name="_csrf" value="{{csrf}}">
+        <button class="btn btn-primary">Зараєструвати користувача</button>
+    </form>
+</div>

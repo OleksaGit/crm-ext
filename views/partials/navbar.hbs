@@ -1,0 +1,59 @@
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">CRM extender</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+         {{#if isAuth}}
+
+             {{#if isHome}}
+                 <li class="active"><a href="/">Головна</a></li>
+             {{else}}
+                 <li><a href="/">Головна</a></li>
+             {{/if}}
+
+
+             {{#if isMessenger}}
+                 <li class="active"><a href="/messenger">Месенджер</a></li>
+             {{else}}
+                 <li><a href="/messenger">Месенджер</a></li>
+             {{/if}}
+
+
+             {{#if isReport}}
+                 <li class="active"><a href="/report">Звіт</a></li>
+             {{else}}
+                 <li><a href="/report">Звіт</a></li>
+             {{/if}}
+
+             {{#if isAdmin}}
+             {{#if isUser}}
+                 <li class="active"><a href="/user">Користувач</a></li>
+             {{else}}
+                 <li><a href="/user">Користувач</a></li>
+             {{/if}}
+             {{/if}}
+
+
+             {{#if isSetting}}
+                 <li class="active"><a href="/setting">Налаштування</a></li>
+             {{else}}
+                 <li><a href="/setting">Налаштування</a></li>
+             {{/if}}
+
+             <li><a href="/auth/logout">Вийти</a></li>
+
+         {{else}}
+
+             {{#if isLogin}}
+                 <li class="active"><a href="/auth/login#login">Увійти в CRM</a></li>
+             {{else}}
+                 <li><a href="/auth/login#login">Увійти в CRM</a></li>
+             {{/if}}
+
+<!--             <li><a href="/auth/logout">Вийти</a></li>-->
+
+         {{/if}}
+
+        </ul>
+    </div>
+</nav>

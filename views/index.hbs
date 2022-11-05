@@ -1,0 +1,99 @@
+<h3>Панель керування</h3>
+<img class="logo-picture" src="/logo.png"/>
+
+<body>
+<h4>Список ремонтів які очікують замовлення комплектуючих</h4>
+<p><a href="/create">Запуск балістичної ракети</a></p>
+
+<table>
+    {{#each data}}
+    <form action="delete/{{this.state}}" method="POST" style="display:inline;">
+    <table>
+        <thead>
+        <tr>
+            <th>Прізвище</th>
+            <th>Імя</th>
+            <th>Виробник</th>
+            <th>Модель</th>
+            <th>Дефект роботи</th>
+            <th>Сатус</th>
+        </tr>
+        </thead>
+
+        <tfoot>
+        <tr>
+            <td colspan="6"></td>
+            <td><button class="btn btn-primary" type="submit">Відправити замовлення в {{this.seller.name}}</button></td>
+        </tr>
+        </tfoot>
+
+        <tbody>
+                    {{#each data}}
+                    <tr>
+                        <td>{{this.surname}}</td>
+                        <td>{{this.name}}</td>
+                        <td>{{this.makers}}</td>
+                        <td>{{this.models}}</td>
+                        <td>{{this.fault}}</td>
+                        <td>{{../status}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+
+                    {{/each}}
+
+        </tbody>
+    </table>
+
+    </form>
+    {{/each}}
+</table>
+</body>
+
+
+
+
+<!--<body>-->
+<!--<h4>Список прийнятих в ремонт за останні 7 днів</h4>-->
+<!--<p><a href="/create">Запуск балістичної ракети</a></p>-->
+
+<!--<table>-->
+<!--    <form action="delete/{{this.id}}" method="POST" style="display:inline;">-->
+<!--        <tr><th>Прізвище</th><th>Імя</th><th>Виробник</th><th>Модель</th><th>Дефект роботи</th><th>Статус</th</tr>-->
+<!--        {{#each data}}-->
+<!--            <tr>-->
+<!--                <td>{{this.surname}}</td>-->
+<!--                <td>{{this.name}}</td>-->
+<!--                <td>{{this.makers}}</td>-->
+<!--                <td>{{this.models}}</td>-->
+<!--                <td>{{this.fault}}</td>-->
+<!--                <td>{{this.state}}</td>-->
+<!--                <td>-->
+<!--            </tr>-->
+<!--        {{/each}}-->
+<!--        <button class="btn btn-primary" type="submit">Відправити замовлення</button>-->
+<!--    </form>-->
+<!--</table>-->
+<!--</body>-->
+
+
+<!--<table>-->
+<!--    <tr><th>Прізвище</th><th>Імя</th><th>Виробник</th><th>Модель</th><th>Дефект роботи</th><th>Статус</th</tr>-->
+<!--    {{#each data}}-->
+<!--        <tr>-->
+<!--            <td>{{this.surname}}</td>-->
+<!--            <td>{{this.name}}</td>-->
+<!--            <td>{{this.makers}}</td>-->
+<!--            <td>{{this.models}}</td>-->
+<!--            <td>{{this.fault}}</td>-->
+<!--            <td>{{this.state}}</td>-->
+<!--            <td>-->
+<!--                <a href="/edit/{{this.id}}">Edit</a>|-->
+<!--                <form action="delete/{{this.id}}" method="POST" style="display:inline;">-->
+<!--                    <input type="submit" value="Delete" />-->
+<!--                </form>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    {{/each}}-->
+<!--</table>-->
