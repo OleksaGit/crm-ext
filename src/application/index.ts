@@ -1,18 +1,37 @@
-const express = require('express');
-const csrf = require('csurf')
-const flash = require('connect-flash')
-const exphbs = require('express-handlebars');
-const mongoose = require('mongoose')
-const session = require('express-session')
-const MongoStore = require('connect-mongodb-session')(session)
-const homeRoutes = require('../routes/home');
-const messengerRoutes = require('../routes/messenger');
-const reportRoutes = require('../routes/report');
-const settingRoutes = require('../routes/setting');
-const userRoutes = require('../routes/user');
-const authRoutes = require('../routes/auth');
-const varMiddleware = require('../middleware/variables')
-const path = require('path');
+// const express = require('express');
+// const csrf = require('csurf')
+// const flash = require('connect-flash')
+// const exphbs = require('express-handlebars');
+// const mongoose = require('mongoose')
+// const session = require('express-session')
+// const MongoStore = require('connect-mongodb-session')(session)
+// const homeRoutes = require('../routes/home');
+// const messengerRoutes = require('../routes/messenger');
+// const reportRoutes = require('../routes/report');
+// const settingRoutes = require('../routes/setting');
+// const userRoutes = require('../routes/user');
+// const authRoutes = require('../routes/auth');
+// const varMiddleware = require('../middleware/variables')
+// const path = require('path');
+
+
+import express from 'express'
+import csrf from 'csurf'
+import flash from 'connect-flash'
+import exphbs from 'express-handlebars'
+import mongoose from 'mongoose'
+import session from 'express-session'
+import { default as connectMongoDBSession} from 'connect-mongodb-session'
+import homeRoutes from '../routes/home.js'
+import messengerRoutes from '../routes/messenger.js';
+import reportRoutes from '../routes/report.js';
+import settingRoutes from '../routes/setting.js';
+import userRoutes from '../routes/user.js';
+import authRoutes from '../routes/auth.js';
+import varMiddleware from '../middleware/variables.js'
+import path from 'path';
+const MongoStore = connectMongoDBSession(session);
+
 
 //todo replace with env
 //const MONGODB_URI = 'mongodb://admin:qazwsx@localhost:27017/'
@@ -22,7 +41,7 @@ const app = express();
 
 const store = new MongoStore({
   collection: 'sessions',
-  uri: MONGODB_URI
+  uri: MONGODB_URI,
 })
 
 const hbs = exphbs.create({
@@ -57,8 +76,8 @@ app.use('/auth', authRoutes)
 
 
 mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  //useNewUrlParser: true,
+  //useUnifiedTopology: true,
 }, (err) => {
   if (err)
     console.log(err);
