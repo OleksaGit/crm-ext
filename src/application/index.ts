@@ -1,20 +1,3 @@
-// const express = require('express');
-// const csrf = require('csurf')
-// const flash = require('connect-flash')
-// const exphbs = require('express-handlebars');
-// const mongoose = require('mongoose')
-// const session = require('express-session')
-// const MongoStore = require('connect-mongodb-session')(session)
-// const homeRoutes = require('../routes/home');
-// const messengerRoutes = require('../routes/messenger');
-// const reportRoutes = require('../routes/report');
-// const settingRoutes = require('../routes/setting');
-// const userRoutes = require('../routes/user');
-// const authRoutes = require('../routes/auth');
-// const varMiddleware = require('../middleware/variables')
-// const path = require('path');
-
-
 import express from 'express'
 import csrf from 'csurf'
 import flash from 'connect-flash'

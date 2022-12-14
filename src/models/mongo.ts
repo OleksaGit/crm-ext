@@ -1,7 +1,5 @@
-'use strict';
-
-const {Schema} = require ('mongoose');
-const mongoose = require('mongoose');
+import { Schema } from 'mongoose';
+import mongoose from 'mongoose';
 
 const settingSchema = new Schema({
   ipServer: { type: String, minlength: 7, maxlength: 15 },
@@ -39,4 +37,4 @@ const User = mongoose.model('User', userSchema);
 const Setting = mongoose.model('Setting', settingSchema);
 const Message = mongoose.model('Message', messageSchema);
 
-module.exports = { User, Setting, Message };
+export { User, Setting, Message };

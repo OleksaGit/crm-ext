@@ -1,4 +1,3 @@
-import {Schema} from "mongoose";
 
 export type UserDTO = {
     name: string,

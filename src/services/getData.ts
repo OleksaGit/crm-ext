@@ -1,7 +1,7 @@
-const base = require('./base');
-const MysqlService = require('./mysql');
+import config from "../config/config";
+import MysqlService from "./mysql";
 
-class GetDatabaseService {
+export default class GetDatabaseService {
 
   static createTasks  (configStatus, action) {
     let result =[]
@@ -18,7 +18,7 @@ class GetDatabaseService {
 
   static async awaitingOrder (action) {
 
-    const tasks = this.createTasks(base.configStatusRepair, action)
+    const tasks = this.createTasks(config.configStatusRepair, action)
     let result = [];
 
     for (let i = 0; i < tasks.length; i++) {
@@ -47,5 +47,3 @@ class GetDatabaseService {
     return result;
   }
 }
-
-module.exports = GetDatabaseService

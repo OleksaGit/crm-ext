@@ -1,4 +1,5 @@
-const model = require('../models/mongo');
+const {model} = require("mongoose");
+
 
 class Setting {
   constructor(ipServer, baseNameAsc, tokenTg, tokenViber) {

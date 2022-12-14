@@ -38,7 +38,8 @@ statList[38] = {
     }
   }
 
-module.exports = {
+let config;
+export default config = {
   configServer: {
     //serverAscIp:  '192.168.10.15',
     serverAscIp:  '78.154.166.49',

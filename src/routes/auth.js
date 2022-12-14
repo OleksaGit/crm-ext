@@ -1,8 +1,7 @@
-const {Router} = require('express')
+const { Router } = require('express')
 const router = Router()
 const { User } = require('../models/mongo');
 const bcrypt = require('bcryptjs')
-const Base = require('../services/base')
 
 router.get('/login', async (req, res) => {
   res.render('auth/login.hbs', {

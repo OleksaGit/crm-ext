@@ -1,14 +1,15 @@
-const { Router } = require('express');
-const router = Router();
-const auth = require('../middleware/auth')
-const {User} = require('../models/mongo');
-const bcrypt = require('bcryptjs')
+import { Router } from 'express';
+import auth from '../middleware/auth'
+import { User } from '../models/mongo';
+import bcrypt from 'bcryptjs'
 
-router.get('/', auth, (req, res) => {
+const router = Router();
+export default router.get('/', auth, (req, res) => {
       res.render('user', {
           title: 'Користувач',
           isUser: true,
-          error: req.flash('registerError')
+          //TODO error after rename extension file;
+          // error: req.flash('registerError')
         });
     });
 
@@ -19,7 +20,8 @@ router.post('/', auth, async (req, res) => {
     const candidate = await User.findOne({ email: email });
 
     if (candidate) {
-      req.flash('registerError', 'Такий користувач вже існує')
+      //TODO error after rename extension file
+      //req.flash('registerError', 'Такий користувач вже існує')
       res.redirect('/user') //todo show message user find in system
     } else {
       const hashPassword = await bcrypt.hash(password, 10)
@@ -42,5 +44,3 @@ router.post('/', auth, async (req, res) => {
     console.log(e)
   }
 })
-
-module.exports = router;

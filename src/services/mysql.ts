@@ -1,13 +1,13 @@
+import mysql from 'mysql2';
+import config from '../config/config.js';
+import USER from './user.js'
 
-const mysql = require('mysql2');
-const USER = require('../services/user')
 
-const pool = mysql.createPool({
-  ...USER.configMysql,
-});
+const pool = mysql.createPool(config.configMysql);
 
-class MySqlService extends USER {
+export default class MySqlService extends USER {
   static escape (...args) {
+    // @ts-ignore
     return mysql.escape(...args);
   }
 
@@ -41,5 +41,3 @@ class MySqlService extends USER {
     });
   }
 }
-
-module.exports = MySqlService
