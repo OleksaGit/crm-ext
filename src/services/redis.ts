@@ -1,4 +1,4 @@
-const  { createClient } = require( 'redis');
+import {createClient} from 'redis';
 
 const client = createClient();
 
@@ -14,4 +14,4 @@ client.on('connect', function() {
 client.set('framework', 'ReactJS').then(r => console.log('write ok'));
 const tmp = client.set('123','123');
 
-console.log(await client.get('framework'))
+console.log(client.get('framework'))

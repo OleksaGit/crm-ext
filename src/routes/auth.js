@@ -1,8 +1,8 @@
-const { Router } = require('express')
-const router = Router()
-const { User } = require('../models/mongo');
-const bcrypt = require('bcryptjs')
+import { Router } from 'express';
+import { User } from '../models/mongo';
+import bcrypt from 'bcryptjs'
 
+const router = Router()
 router.get('/login', async (req, res) => {
   res.render('auth/login.hbs', {
     title: 'Авторизація',
@@ -47,5 +47,4 @@ router.post('/login', async (req, res) => {
 
 })
 
-//export const authRoutes = router
- module.exports = router
+export default router

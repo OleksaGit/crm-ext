@@ -5,13 +5,13 @@ import exphbs from 'express-handlebars'
 import mongoose from 'mongoose'
 import session from 'express-session'
 import { default as connectMongoDBSession} from 'connect-mongodb-session'
-import homeRoutes from '../routes/home.js'
-import messengerRoutes from '../routes/messenger.js';
-import reportRoutes from '../routes/report.js';
-import settingRoutes from '../routes/setting.js';
-import userRoutes from '../routes/user.js';
-import authRoutes from '../routes/auth.js';
-import varMiddleware from '../middleware/variables.js'
+import homeRoutes from '../routes/home'
+import messengerRoutes from '../routes/messenger';
+import reportRoutes from '../routes/report';
+import settingRoutes from '../routes/setting';
+import userRoutes from '../routes/user';
+import authRoutes from '../routes/auth';
+import varMiddleware from '../middleware/variables'
 import path from 'path';
 const MongoStore = connectMongoDBSession(session);
 

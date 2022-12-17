@@ -1,6 +1,6 @@
-const { Router } = require('express');
+import {Router} from 'express';
 const router = Router();
-const auth = require('../middleware/auth')
+import auth from '../middleware/auth';
 
 router.get('/', auth, (req, res) => {
       res.render('report', {
@@ -9,4 +9,4 @@ router.get('/', auth, (req, res) => {
         });
     });
 
-module.exports = router;
+export default router

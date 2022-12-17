@@ -1,6 +1,16 @@
 import config from "../config/config";
 import MysqlService from "./mysql";
 
+type AwaitingOrder = {
+   surname: string;
+   name: string;
+   makers: string;
+   models: string;
+   fault: string;
+   state: number;
+   id: number;
+}
+
 export default class GetDatabaseService {
 
   static createTasks  (configStatus, action) {
@@ -16,32 +26,37 @@ export default class GetDatabaseService {
   }
 
 
+
   static async awaitingOrder (action) {
 
     const tasks = this.createTasks(config.configStatusRepair, action)
     let result = [];
 
     for (let i = 0; i < tasks.length; i++) {
-      let dataSql = await MysqlService.query(`SELECT clients.surname, clients.name, device_makers.name as makers, device_models.name as models, workshop.fault, workshop.state, workshop.id
-        FROM ascnbdb.workshop 
-        JOIN clients ON clients.id = workshop.client
-        JOIN device_models ON device_models.id = workshop.model
-        JOIN device_makers ON device_makers.id = workshop.maker
-        WHERE workshop.state = ${tasks[i].state}`, 100);
+        let dataSql = await MysqlService.query(`SELECT clients.surname, clients.name, device_makers.name as makers, device_models.name as models, workshop.fault, workshop.state, workshop.id
+            FROM ascnbdb.workshop 
+            JOIN clients ON clients.id = workshop.client
+            JOIN device_models ON device_models.id = workshop.model
+            JOIN device_makers ON device_makers.id = workshop.maker
+            WHERE workshop.state = ${tasks[i].state}`, 1000);
+        // @ts-ignore
+        if (dataSql.length) {
 
-      let parts = await MysqlService.query(`SELECT parts_request.item_name, parts_request.notes
-        FROM ascnbdb.parts_request
-        WHERE parts_request.repair = ${dataSql[0].id}`, 100)
+            let parts = await MysqlService.query(`SELECT parts_request.item_name, parts_request.notes
+            FROM ascnbdb.parts_request
+            WHERE parts_request.repair = ${dataSql[0].id}`, 1000)
 
-      result.push({
-        data: dataSql,
-        parts: parts,
-        status: tasks[i].status,
-        state: tasks[i].state,
-        action: tasks[i].action,
-        seller: tasks[i].seller,
-      });
+            result.push({
+                data: dataSql,
+                parts: parts,
+                status: tasks[i].status,
+                state: tasks[i].state,
+                action: tasks[i].action,
+                seller: tasks[i].seller,
+            });
+        }
     }
+
      // console.log(tasks)
     console.log(JSON.stringify(result, null, 2))
     return result;

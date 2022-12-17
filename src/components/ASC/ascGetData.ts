@@ -1,39 +1,22 @@
 import MysqlService from '../../services/mysql';
 import base from '../../services/base';
+import AscTask from "./ascTask";
 
-export default class Asc {
+type AwaitingOrder = {
+  surname: string;
+  name: string;
+  makers: string;
+  models: string;
+  fault: string;
+  state: number;
+  id: number;
+}
 
-  static createTasks(configStatus, action) {
-    let result = []
-    for (let i = 0; i < configStatus.length; i++) {
-      if (configStatus[i] !== undefined) {
-        if (configStatus[i].action === action) {
-          result.push(configStatus[i])
-        }
-      }
-    }
-    return result
-  }
-
-
-  static findStatus(configStatus, findAction) {
-    let result = []
-    for (let i = 0; i < configStatus.length; i++) {
-      if (configStatus[i] !== undefined) {
-        if (configStatus[i].action === findAction) {
-          //result.push(configStatus[i])
-          result.push(i)
-        }
-      }
-    }
-    return result
-  }
-
-
+export default class AscGetData extends AscTask {
 
   static async awaitingOrder() {
     let result = []
-    const numberOfTask = Asc.createTasks(base.configStatusRepair, 'order')
+    const numberOfTask = AscGetData.createTasks(base.configStatusRepair, 'order')
 
     for (let i = 0; i < numberOfTask.length; i++) {
 
@@ -42,7 +25,7 @@ export default class Asc {
         JOIN clients ON clients.id = workshop.client
         JOIN device_models ON device_models.id = workshop.model
         JOIN device_makers ON device_makers.id = workshop.maker
-        WHERE workshop.state = ${numberOfTask[i].state}`, 100)
+        WHERE workshop.state = ${numberOfTask[i].state}`, 1000)
 
       result.push(
           {

@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/application/index.js",
+    "startTS": "ts-node src/application/index.ts",
     "tsc": "tsc",
     "postinstall": "npm run tsc",
     "dev": "ts-node-dev — respawn — pretty — transpile-only index.ts"

@@ -4,7 +4,7 @@ import { User } from '../models/mongo';
 import bcrypt from 'bcryptjs'
 
 const router = Router();
-export default router.get('/', auth, (req, res) => {
+router.get('/', auth, (req, res) => {
       res.render('user', {
           title: 'Користувач',
           isUser: true,
@@ -44,3 +44,5 @@ router.post('/', auth, async (req, res) => {
     console.log(e)
   }
 })
+
+export default router

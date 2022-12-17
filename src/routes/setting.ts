@@ -1,7 +1,7 @@
-const { Router } = require('express');
-const Setting = require('../models/setting')
+import {Router} from 'express';
+import Setting from '../models/setting';
 const router = Router();
-const auth = require('../middleware/auth')
+import auth from '../middleware/auth';
 
 router.get('/', auth, (req, res) => {
       res.render('setting', {
@@ -18,4 +18,4 @@ router.post('/',(req, res) => {
 
 })
 
-module.exports = router;
+export default router
