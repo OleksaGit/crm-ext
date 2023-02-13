@@ -55,7 +55,7 @@ export default config = {
     user: "root",
     port: 7380,
     database: "ascnbdb",
-    password: "bvepkriv050482bvepkriv050482"
+    password: "bvepkriv050482"
   },
 
   configStatusRepair: statList
